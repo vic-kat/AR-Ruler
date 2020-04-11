@@ -86,17 +86,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func calculate() {
         let start = dotManyNodes[0]
         let end = dotManyNodes[1]
-      //  print(start.position)
-      //  print(end.position)
         
         let a = end.position.x - start.position.x
         let b = end.position.y - start.position.y
         let c = end.position.z - start.position.z
         
         let distance =  sqrt(pow(a, 2) + pow(b, 2) + pow(c, 2))
-        
-       // print(abs(distance))
-        
         updateText(text: "\(abs(distance))",  atPosition: end.position)
         
     }
@@ -107,8 +102,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let textGeometry = SCNText(string: text, extrusionDepth: 1.0)
         textGeometry.firstMaterial?.diffuse.contents = UIColor.green
-        
-        //print(text)
         
         textNode = SCNNode(geometry: textGeometry)
         textNode.position = SCNVector3(position.x, position.y + 0.01, position.z)
